@@ -11,31 +11,28 @@ import web.model.User;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
+    private final UserDao userDao;
 
-    @Autowired
-    private UserDao userDao;
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
-//    @Transactional
     @Override
     public List<User> showAllUsers() {
         return userDao.showAllUsers();
     }
-//    @Transactional
     @Override
     public User showUserId(int id) {
         return userDao.showUserId(id);
     }
-//    @Transactional
     @Override
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
-//    @Transactional
     @Override
     public void updateUser(int id, User updateuser) {
         userDao.updateUser(id,updateuser);
     }
-//    @Transactional
     @Override
     public void deleteUser(int id) {
         userDao.deleteUser(id);

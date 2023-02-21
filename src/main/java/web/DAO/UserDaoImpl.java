@@ -18,9 +18,7 @@ public class UserDaoImpl implements UserDao {
     }
     @Override
     public User showUserId(int id) {
-        TypedQuery<User> query= entityManager.createQuery("SELECT u FROM User u WHERE u=:id", User.class);
-        query.setParameter("id",id);
-        return query.getResultList().stream().findAny().orElse(null);
+        return entityManager.find(User.class, Integer.valueOf(id));
     }
     @Override
     public void saveUser(User user) {
@@ -34,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void deleteUser(int id) {
-        TypedQuery<User> query= entityManager.createQuery("DELETE FROM User WHERE id=:id", User.class);
-        query.setParameter("id",id);
+        User user = entityManager.find(User.class, Integer.valueOf(id));
+        entityManager.remove(user);
     }
 }

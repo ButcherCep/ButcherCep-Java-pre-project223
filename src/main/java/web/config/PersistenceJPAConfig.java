@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement(proxyTargetClass = true)
 @ComponentScan(value = "web")
-//@EnableJpaRepositories(basePackages="web", entityManagerFactoryRef="emf")
 public class PersistenceJPAConfig {
     private final Environment env;
 
